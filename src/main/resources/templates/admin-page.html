@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/css/Style.css}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container ">
+    <div  id="add-new-subform" class="row">
+        <form
+                method="POST"
+                action="http://localhost:8080/createPlayer"
+                data-user-add-form >
+            <p>Your Score:  <span id="your-score"></span></p>
+            <fieldset >
+                <button type="submit" data-user-add-button id="submit_button" class="btn btn-primary">OK</button>
+            </fieldset>
+        </form>
+    </div>
+    <div class="row justify-content-center">
+        <h1 class="text-center">Welcome to the game</h1>
+    </div>
+    <div class="row justify-content-center text-center">
+        <div class="col col-2 alert-secondary rockBorderRadius">
+            <h2>Rock <i class="fa fa-hand-rock-o" aria-hidden="true"></i></h2>
+        </div>
+        <div class="col col-2 alert-primary">
+            <h2>Paper <i class="fa fa-hand-paper-o" aria-hidden="true"></i></h2>
+        </div>
+        <div class="col col-2 alert-danger scissorsBorderRadius">
+            <h2>Scissors <i class="fa fa-hand-scissors-o" aria-hidden="true"></i></h2>
+        </div>
+    </div>
+    <section class="row justify-content-center">
+        <div class="col col-6 game-container">
+            <div id="js-newGameElement" class="row justify-content-center">
+                <div class="col col-6">
+                    <blockquote class="blockquote text-center">
+                        <p>Each win is a point. <br> You play to three losers. <br> Check how many points you will get.</p>
+                    </blockquote>
+                </div>
+                <button id="js-newGameButton" class="col col-6 btn btn-success"><h2>New game</h2></button>
+            </div>
+            <div id="js-playerPickElement" class="row justify-content-center">
+                <div class="col  text-center">
+                    <button id="js-playerPick_rock" class="btn btn-outline-secondary">
+                        <span class="badge badge-dark">
+                            <i class="fa fa-hand-rock-o" aria-hidden="true"></i>
+                        </span>
+                        Rock
+                    </button>
+                    <button id="js-playerPick_paper"  class="btn btn-outline-secondary">
+                        <span class="badge badge-dark">
+                            <i class="fa fa-hand-paper-o" aria-hidden="true"></i>
+                        </span>
+                        Paper
+                    </button>
+                    <button id="js-playerPick_scissors"  class="btn btn-outline-secondary">
+                        <span class="badge badge-dark">
+                            <i class="fa fa-hand-scissors-o" aria-hidden="true"></i>
+                        </span>
+                        Scissors
+                    </button>
+                </div>
+            </div>
+
+            <div id="js-resultsTableElement" class="row justify-content-center ">
+                <div class="col">
+                    <div class=" row">
+                        <div class="col col-5 text-center">
+                            <span id="js-playerPoints" class="badge">
+                                0
+                            </span>
+                            <span id="js-playerName">
+                                Player Name
+                            </span>
+                        </div>
+                        <div class="col col-2 text-center">
+                            <p id="js-VS">VS. <br><span id="js-draw" class="alert-color">DRAW!</span></p>
+                        </div>
+                        <div class="col col-5 text-center">
+                            <span id="js-computerPoints" class="badge">
+                                0
+                            </span>
+                            Computer
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-5 text-center">
+                            <span id="js-playerPick">
+                                Player selection
+                            </span>
+                        </div>
+                        <div class="col col-2"></div>
+                        <div class="col col-5 text-center">
+                            <span id="js-computerPick">
+                                Computer selection
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-5 text-center">
+                            <span id="js-playerResult">
+                                Player Score
+                            </span>
+                        </div>
+                        <div class="col col-2"></div>
+                        <div class="col col-5 text-center">
+                            <span id="js-computerResult">
+                                Computer Score
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="row justify-content-center">
+        <div class="col col-6">
+            <div class="row">
+                <div  class="topTen text-center"><span>ALL PLAYERS</span></div>
+                <table class="table   table-bordered table-striped"  >
+                    <thead class="thead-dark" data-datatable-row-top>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nick</th>
+                            <th scope="col">Score</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">---</th>
+                        </tr>
+                    </thead>
+                    <tbody data-player-container data-datatable-row-template>
+                        <tr>
+                            <td scope="row" ><span class="idTable"></span></td>
+                            <td data-user-nick-section><span data-user-nick-paragraph></span></td>
+                            <td data-user-score-section><span data-user-score-paragraph></span></td>
+                            <td data-user-date-section><span data-user-date-paragraph></span></td>
+                            <td >
+                                <form data-user-id>
+                                    <button type="button"  data-player-delete-button  class="btn btn-danger btn-sm ">DELETE</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <footer class="row justify-content-center">
+        <div  class="col col-6 footer text-center">
+            <div class="row">
+                <div class="col col-4">
+                    <div class="copyright">
+                        <span >Copyright © 2022</span>
+                    </div>
+                </div>
+                <div class="col col-8">
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit" class="btn btn-secondary btn-sm"  value="Log out"> Log out </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<script  th:src="@{/js/jq-scripts.js}"></script>
+</body>
+</html>

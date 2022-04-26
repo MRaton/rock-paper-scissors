@@ -1,0 +1,132 @@
+body {
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box; }
+
+div#add-new-subform {
+
+    position: absolute;
+    top: 0px;
+    right: 45%;
+    display: none;
+    z-index: 100;
+    background-color: #fff;
+    border: solid 1px #000;
+    padding: 15px;
+    width: 150px;
+}
+
+div#cover {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    background-color: #000000;
+    opacity: 0.7;
+}
+
+.rockBorderRadius {
+    border-radius: 10px 0 0 10px;
+}
+
+.scissorsBorderRadius {
+    border-radius: 0 10px 10px 0;
+}
+
+.btn-success {
+    border-radius: 0 10px 10px 0;
+}
+
+fieldset {
+    padding: 0 0 0 35px;
+    font-size: 1.25rem;
+}
+
+.game-container {
+    height: 202px;
+    border: solid 2px;
+    border-radius: 10px;
+
+}
+
+#js-playerPickElement {
+    padding-top: 20px;
+}
+
+#js-resultsTableElement {
+    padding: 30px 30px;
+}
+
+.blockquote {
+    padding-top: 12%;
+}
+
+
+#js-newGameElement {
+    height: 200px;
+}
+
+.topTen {
+    width: 100%;
+    height: 40px;
+    color: white;
+    background-color: #212529;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 10px 10px 0 0;
+
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+table {
+    counter-reset: rowNumber -1;
+
+}
+
+table tr {
+    counter-increment: rowNumber;
+}
+
+table tr td:first-child::before {
+    content: counter(rowNumber);
+    min-width: 1em;
+    margin-right: 0.5em;
+}
+
+#add-admin-panel-subform {
+    top: 0px;
+    right: 45%;
+    display: block;
+    z-index: 100;
+    border: solid 1px #000;
+    padding: 15px;
+
+}
+
+.footer {
+    width: 100%;
+    min-height: 40px;
+    color: white;
+    background-color: #212529;
+    border-radius: 0 0 10px 10px;
+    padding: 10px;
+}
+
+.copyright {
+    margin-top: 25%;
+}
+
+.footer button {
+    margin: 5px 0;
+
+}
+
+.alert-color {
+    color: red;
+}
+
